@@ -16,6 +16,7 @@ API_URL = 'https://post.chikka.com/smsapi/request'
 class Chikka(object):
 
     def __init__(self, *args, **kwargs):
+        # TODO this can be written in a better way
         for k, v in kwargs.iteritems():
             setattr(self, k, v)
 
