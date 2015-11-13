@@ -1,22 +1,20 @@
-INSTALLATION
-============
 
-$ pip install python-chikka
+# Python Chikka #
 
+## INSTALLATION ##
 
-USAGE
-======
+    $ pip install python-chikka
 
-from chikka import Chikka
+## USAGE ##
 
-c = Chikka(client_id=CLIENT_ID, secret_key=SECRET_KEY, shortcode=SHORTCODE)
+    from chikka import Chikka
 
-c.send('09991234567', 'Mensahe mo')
+    c = Chikka(client_id=CLIENT_ID, secret_key=SECRET_KEY, shortcode=SHORTCODE)
+    c.send('09991234567', 'Mensahe mo')
 
-
-Before sending your message you can define a message_id
+Before sending your message you may  define a message_id
 if you do not supply a message_id a random message_id will
-be generated 
+be generated.
 
 c.send('09991234567', 'Mensahe mo na may message id', message_id='1234567890')
 
