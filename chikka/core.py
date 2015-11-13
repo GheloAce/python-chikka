@@ -1,6 +1,7 @@
 import os
 import re
 import requests
+from .exceptions import *
 
 # add local_settings.py to .gitignore
 # variables in local_settings optional, it won't be uploaded
@@ -13,13 +14,14 @@ except ImportError:
 
 API_URL = 'https://post.chikka.com/smsapi/request'
 
+
 class Chikka(object):
+    def __init__(self, client_id, secret_key, shortcode):
+        self.client_id = client_id
+        self.secret_key = secret_key
+        self.shortcode = shortcode
 
-    def __init__(self, *args, **kwargs):
-        for k, v in kwargs.iteritems():
-            setattr(self, k, v)
-
-    def send(self, mobile_number, message, **kwargs):
+    def send(self, mobile_number, message, message_id=None, **kwargs):
         payload = self._prepare_payload()
 
         # check and validate mobile number
@@ -60,57 +62,33 @@ class Chikka(object):
         # this can be useful to track messages sent
         # however if message_id does not exist this method
         # will generate a random message id
-        payload['message_id'] = kwargs.get('message_id', 
-                                    os.urandom(16).encode('hex'))
+        payload['message_id'] = kwargs.get(
+            'message_id', os.urandom(16).encode('hex'))
 
         payload['message'] = message
 
-        self.response = requests.post(API_URL, data=payload)
+        post_response = requests.post(API_URL, data=payload)
 
-        return payload
-
+        return payload, post_response
 
     def _prepare_payload(self):
-        # check if other required fields exists
+
         client_id = getattr(self, 'client_id', CLIENT_ID)
+        secret_key = getattr(self, 'secret_key', SECRET_KEY)
+        shortcode = getattr(self, 'shortcode', SHORTCODE)
+
         if not client_id:
             print "Error: Your Client ID is required.\n"
             raise NullClientIDException
-
-        secret_key = getattr(self, 'secret_key', SECRET_KEY)
         if not secret_key:
             print "Error: Your Secret Key is required.\n"
             raise NullSecretKeyException
-
-        shortcode = getattr(self, 'shortcode', SHORTCODE)
         if not shortcode:
             print "Error: Your shortcode is required.\n"
             raise NullShortCodeException
 
-        payload = {
+        return {
             'client_id': client_id,
             'secret_key': secret_key,
             'shortcode': shortcode,
         }
-
-        return payload
-
-# import of exceptions not working on mine
-# so placed it here. sorry.
-class NullMobileNumberException(Exception):
-    pass
-
-class InvalidMobileNumberException(Exception):
-    pass
-
-class NullClientIDException(Exception):
-    pass
-
-class NullSecretKeyException(Exception):
-    pass
-
-class NullShortCodeException(Exception):
-    pass
-
-class NullRequestCostException(Exception):
-    pass
