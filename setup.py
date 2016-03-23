@@ -1,19 +1,17 @@
-import chikka
-
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
 setup(
-    name=chikka.__app_name__,
-    version=chikka.__version__,
-    description=chikka.__description__,
-    author=chikka.__author__,
-    author_email=chikka.__author_email__,
+    name="python-chikka",
+    version="0.5.1",
+    description="Python API Wrapper for Chikka ",
+    author="Mark Allan B Meriales",
+    author_email="mark.meriales@gmail.com",
     packages=['chikka'],
     install_requires=['requests>=2.0.1'],
-    url=chikka.__app_url__,
+    url="https://github.com/makmac213/python-chikka/",
     classifiers=(
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -21,5 +19,5 @@ setup(
         'Programming Language :: Python',
         'License :: Freeware',
     ),
-    download_url=chikka.__download_url__,
+    download_url="https://github.com/makmac213/python-chikka/",
 )
