@@ -16,4 +16,3 @@ __download_url__ = "https://github.com/makmac213/python-chikka/"
 from .core import *
 from .exceptions import *
 from .payload import *
-from .test import *
