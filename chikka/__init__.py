@@ -13,4 +13,7 @@ __author_email__ = "mark.meriales@gmail.com"
 __app_url__ = "https://github.com/makmac213/python-chikka/"
 __download_url__ = "https://github.com/makmac213/python-chikka/"
 
-from core import *
+from .core import *
+from .exceptions import *
+from .payload import *
+from .test import *

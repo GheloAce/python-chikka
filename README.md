@@ -18,5 +18,12 @@ be generated.
 
     c.send('09991234567', 'Mensahe mo na may message id', message_id='1234567890')
 
+## Testing ##
 
+Unit tested for:
+
+* Python 2.7
+* Python 3.3
+* Python 3.4
+* Python 3.5
 

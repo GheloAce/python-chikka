@@ -10,7 +10,10 @@ setup(
     author="Mark Allan B Meriales",
     author_email="mark.meriales@gmail.com",
     packages=['chikka'],
-    install_requires=['requests>=2.0.1'],
+    install_requires=['requests>=2.0.1', 'six'],
+    extras_require={
+        'phonenumbers': ['phonenumbers']
+    },
     url="https://github.com/makmac213/python-chikka/",
     classifiers=(
         'Development Status :: 4 - Beta',
