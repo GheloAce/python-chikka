@@ -1,11 +1,11 @@
 
 # Python Chikka #
 
-## INSTALLATION ##
+## Installation ##
 
     $ pip install python-chikka
 
-## USAGE ##
+## Usage ##
 
     from chikka import Chikka
 
