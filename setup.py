@@ -5,7 +5,7 @@ except ImportError:
 
 setup(
     name="python-chikka",
-    version="0.5.1",
+    version="0.5.2",
     description="Python API Wrapper for Chikka ",
     author="Mark Allan B Meriales",
     author_email="mark.meriales@gmail.com",
